@@ -2,10 +2,8 @@
 This Android app uses Parse to create users.
 
 Flow:
-User goes to welcome_loginOrsingup,then is can login or signup.
-
+User goes to Welcome Page(welcome_loginOrsingup.java), then ts can login or signup.
 User is able to go to Main Page and signout. 
-
 
 In Parse App core settings you can see the users. 
 
