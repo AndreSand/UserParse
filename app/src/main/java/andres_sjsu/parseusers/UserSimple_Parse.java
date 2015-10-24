@@ -26,7 +26,8 @@ public class UserSimple_Parse extends Application {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
-
+    }
+}
         // Test creation of object
 /*
         ParseUser user = new ParseUser();
@@ -49,5 +50,3 @@ public class UserSimple_Parse extends Application {
             }
 
         });*/
-    }
-}
