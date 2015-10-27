@@ -26,4 +26,34 @@
         android:id="@+id/txt_name"
         android:layout_below="@+id/logout_button"
         android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+
+        android:layout_below="@+id/txt_name"
+
+        android:background="@android:drawable/ic_menu_camera"
+        android:layout_alignRight="@+id/logout_button"
+        android:layout_alignEnd="@+id/logout_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email"
+        android:id="@+id/tv_email"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zipcoe"
+        android:id="@+id/tv_zipcode"
+        android:layout_alignTop="@+id/tv_email"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Message;
 
 import com.parse.Parse;
+import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -26,6 +27,13 @@ public class UserSimple_Parse extends Application {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+
+        ParseACL defaultACL = new ParseACL();
+        // If you would like all objects to be private by default, remove this
+        // line.
+        defaultACL.setPublicReadAccess(true);
+
+        ParseACL.setDefaultACL(defaultACL, true);
     }
 }
         // Test creation of object

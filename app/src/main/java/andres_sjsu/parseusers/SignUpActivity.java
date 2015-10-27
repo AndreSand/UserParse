@@ -19,11 +19,16 @@ import com.parse.SignUpCallback;
 /**
  * Created by andres on 10/6/15.
  */
+
 public class SignUpActivity extends Activity {
     // UI references.
     private EditText usernameEditText;
+    private EditText useremail_edit_text;
+    private EditText user_zipcode;
     private EditText passwordEditText;
     private EditText passwordAgainEditText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,13 @@ public class SignUpActivity extends Activity {
 
         // Set up the signup form.
         usernameEditText = (EditText) findViewById(R.id.username_edit_text);
-
+        useremail_edit_text = (EditText) findViewById(R.id.useremail_edit_text);
+        user_zipcode = (EditText) findViewById(R.id.user_zipcode);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
         passwordAgainEditText = (EditText) findViewById(R.id.password_again_edit_text);
+
+
+
         passwordAgainEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -59,6 +68,9 @@ public class SignUpActivity extends Activity {
 
     private void signup() {
         String username = usernameEditText.getText().toString().trim();
+        String email = useremail_edit_text.getText().toString().trim();
+        String zipcode = user_zipcode.getText().toString().trim();
+
         String password = passwordEditText.getText().toString().trim();
         String passwordAgain = passwordAgainEditText.getText().toString().trim();
 
@@ -69,6 +81,15 @@ public class SignUpActivity extends Activity {
             validationError = true;
             validationErrorMessage.append(getString(R.string.error_blank_username));
         }
+        if (email.length() == 0) {
+            validationError = true;
+            validationErrorMessage.append(getString(R.string.error_blank_email));
+        }
+        if (zipcode.length() == 0) {
+            validationError = true;
+            validationErrorMessage.append(getString(R.string.error_blank_username));
+        }
+
         if (password.length() == 0) {
             if (validationError) {
                 validationErrorMessage.append(getString(R.string.error_join));
@@ -97,10 +118,15 @@ public class SignUpActivity extends Activity {
         dialog.setMessage(getString(R.string.progress_signup));
         dialog.show();
 
+
         // Set up a new Parse user
         ParseUser user = new ParseUser();
         user.setUsername(username);
         user.setPassword(password);
+        user.put("email", email);
+        user.put("myString", zipcode);
+        user.put("zipcode", zipcode);
+
 
         // Call the Parse signup method
         user.signUpInBackground(new SignUpCallback() {
@@ -119,4 +145,5 @@ public class SignUpActivity extends Activity {
             }
         });
     }
+
 }
